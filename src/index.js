@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 const Square = (props) => {
-console.log(props.highlight,props.i);
 
 if(props.highlight){
- return <button  className="square hightlight" onClick={props.onClick} >
+ return <button  className="square highlight" onClick={props.onClick} >
   {props.value}
 </button>
 }
@@ -33,7 +32,7 @@ class Board extends React.Component {
   
   return <Square value={this.props.squares[i]}
           onClick={() => this.props.onClick(i)} 
-          
+          highlight={false}
           i={i}
         />;
   }
@@ -127,7 +126,11 @@ class Game extends React.Component {
     if (winner) {
       status = 'Winner: ' + winner[0];
      winSquare =winner[1]
-    } else {
+    }
+     else if(!winner&&this.state.stepNumber===9){
+      status='this matchis draw'
+    }
+      else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 

@@ -51,3 +51,10 @@ body {
   .selected{
     font-weight: bold;
   }
+
+  .bold{
+  font-weight: bold;
+  }
+  .highlight{
+    color:red;
+  }
